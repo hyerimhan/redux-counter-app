@@ -11,14 +11,21 @@ const root = ReactDOM.createRoot(
 );
 
 const store = createStore(counter);
-store.dispatch({ type: "INCREMENT" });
-store.dispatch({ type: "DECREMENT" });
 
-root.render(
-  <React.StrictMode>
-    <App value={store.getState()} />
-  </React.StrictMode>
-);
+const render = () =>
+  root.render(
+    <React.StrictMode>
+      <App
+        value={store.getState()}
+        onIncrement={() => store.dispatch({ type: "INCREMENT" })}
+        onDecrement={() => store.dispatch({ type: "DECREMENT" })}
+      />
+    </React.StrictMode>
+  );
+
+render();
+
+store.subscribe(render);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

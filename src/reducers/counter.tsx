@@ -1,5 +1,3 @@
-// reducer는 표현문으로!
-
 export const counter = (state = 0, action: { type: string }) => {
   switch (action.type) {
     case "INCREMENT":

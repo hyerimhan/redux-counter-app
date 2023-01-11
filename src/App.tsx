@@ -2,14 +2,17 @@ import "./App.css";
 
 type Props = {
   value: number;
+  onIncrement: () => void;
+  onDecrement: () => void;
 };
 
-function App({ value }: Props) {
+function App({ value, onIncrement, onDecrement }: Props) {
   return (
     <div className="App">
       <p>
-        Clicked: {value} times
-        <button>+</button> <button>-</button>
+        Clicked: {value} times <br />
+        <button onClick={onIncrement}>+</button>{" "}
+        <button onClick={onDecrement}>-</button>
       </p>
     </div>
   );
