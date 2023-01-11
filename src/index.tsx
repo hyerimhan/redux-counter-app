@@ -13,8 +13,6 @@ const root = ReactDOM.createRoot(
 
 const store = createStore(rootReducer);
 
-store.dispatch({ type: "ADD_TODO", text: "밥먹기" });
-
 const render = () =>
   root.render(
     <React.StrictMode>
