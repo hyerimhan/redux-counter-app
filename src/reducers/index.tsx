@@ -1,12 +1,13 @@
-// reducer는 표현문으로!
+import { combineReducers } from "redux";
+import todos from "./todos";
+import counter from "./counter";
 
-export const counter = (state = 0, action: { type: string }) => {
-  switch (action.type) {
-    case "INCREMENT":
-      return state + 1;
-    case "DECREMENT":
-      return state - 1;
-    default:
-      return state;
-  }
-};
+// reducer는 표현문으로!
+const rootReducer = combineReducers({
+  todos,
+  counter,
+});
+
+export default rootReducer;
+
+export type RootState = ReturnType<typeof rootReducer>;

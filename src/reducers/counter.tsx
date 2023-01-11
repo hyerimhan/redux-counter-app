@@ -1,4 +1,4 @@
-export const counter = (state = 0, action: { type: string }) => {
+const counter = (state = 0, action: { type: string }) => {
   switch (action.type) {
     case "INCREMENT":
       return state + 1;
@@ -8,3 +8,5 @@ export const counter = (state = 0, action: { type: string }) => {
       return state;
   }
 };
+
+export default counter;

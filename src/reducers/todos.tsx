@@ -1,7 +1,6 @@
 enum ActionType {
   ADD_TODO = "ADD_TODO",
   DELETE_TODO = "DELETE_TODO",
-  EDIT_TODO = "EDIT_TODO",
 }
 
 interface Action {
@@ -12,9 +11,7 @@ interface Action {
 const todos = (state = [], action: Action) => {
   switch (action.type) {
     case "ADD_TODO":
-      return;
-    case "DELETE_TODO":
-      return;
+      return [...state, action.text];
     default:
       return state;
   }
