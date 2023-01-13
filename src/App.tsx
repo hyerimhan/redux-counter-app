@@ -1,8 +1,10 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "./reducers";
 import { useDispatch } from "react-redux/es/exports";
+import axios from "axios";
+import { ActionType } from "./reducers/posts";
 
 type Props = {
   onIncrement: () => void;
@@ -14,6 +16,17 @@ function App({ onIncrement, onDecrement }: Props) {
   const counter = useSelector((state: RootState) => state.counter);
   const todos: string[] = useSelector((state: RootState) => state.todos);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchPosts());
+  }, [dispatch]);
+
+  const fetchPosts: any = () => {
+    return async function fetchPostsThunk(dispatch: any, getState: any) {
+      const res = await axios.get("https://jsonplaceholder.typicode.com/posts");
+      dispatch({ type: ActionType.FEATCH_POSTS, payload: res.data });
+    };
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTodoValue(e.target.value);
